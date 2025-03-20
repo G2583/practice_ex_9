@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class HandleOrders {
@@ -11,12 +12,13 @@ public class HandleOrders {
     private double totalOrderPrice = 0.0;
     private int numberOfPizzasOrdered = 0;
     StringBuilder pizzaOrderSummary = new StringBuilder();
+    private ArrayList<CustomPizza> customPizzas = new ArrayList<>();
 
     Scanner input = new Scanner(System.in);
 
     public void takeOrder(){
         String orderAnother = "Y";
-        int j= 0;
+        int j = 0;
         int m = 0;
         int n = 0;
         int p = 0;
@@ -111,7 +113,8 @@ public class HandleOrders {
                 numberOfPizzasOrdered++;
                 j++;
 
-
+                CustomPizza newCustomPizza = new CustomPizza(customPizza.toString(), customPizzaPrice);
+                customPizzas.add(newCustomPizza);
             }
 
             i = 1;
@@ -189,5 +192,15 @@ public class HandleOrders {
         
         return pizzaOrderSummary.toString();
     }
+
+    public ArrayList<CustomPizza> getCustomPizzas() {
+        return customPizzas;
+    }    
     
+    public void displayCustomPizzas() {
+        for (CustomPizza pizza : customPizzas) {
+                System.out.println(pizza);
+        }
+    }
 }
+    
